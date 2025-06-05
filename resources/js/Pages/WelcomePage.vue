@@ -1,60 +1,59 @@
 <template>
-
-  <div class="font-sans bg-gray-900 text-gray-100">
+  <div class="font-sans bg-gray-900 text-gray-100 selection:bg-primary/50">
     <!-- Navbar -->
-    <header class="fixed w-full z-50 bg-gray-800/80 backdrop-blur shadow">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-primary">Faraimunashe</h1>
+    <header class="fixed top-0 w-full z-50 bg-gray-800/80 backdrop-blur shadow-lg">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        <h1 class="text-2xl font-extrabold text-primary tracking-wider">Faraimunashe</h1>
 
-    <nav class="space-x-6 text-gray-100 font-medium flex flex-wrap items-center gap-4">
-      <a
-        v-for="link in ['About', 'Tech', 'Experience', 'Education', 'Projects', 'Contact']"
-        :key="link"
-        :href="'#' + link.toLowerCase()"
-        class="relative inline-block group transition duration-300"
-      >
-        <span class="relative z-10">{{ link }}</span>
-        <span
-          class="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full"
-        ></span>
-        <span
-          class="absolute inset-0 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+        <nav class="flex flex-wrap items-center gap-6 font-semibold text-gray-100">
+          <a
+            v-for="link in ['About', 'Tech', 'Experience', 'Education', 'Projects', 'Contact']"
+            :key="link"
+            :href="'#' + link.toLowerCase()"
+            class="relative group transition duration-300 ease-in-out hover:scale-105"
+          >
+            <span class="relative z-10">{{ link }}</span>
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-500 ease-in-out group-hover:w-full"
+            ></span>
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+            >
+              {{ link }}
+            </span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen flex flex-col md:flex-row items-center justify-center px-6 gap-10 bg-gradient-to-r from-primary to-accent relative overflow-hidden">
+      <div class="flex-1 md:w-1/2 text-center md:text-left space-y-4">
+        <h2 ref="heroTitle" class="text-5xl md:text-6xl font-extrabold leading-tight">Kwaziwai, I'm Faraimunashe</h2>
+        <p ref="heroSubtitle" class="text-lg md:text-xl font-light">Software Developer crafting beautiful & intuitive desktop, web & mobile application experiences.</p>
+        <a
+          href="/assets/Faraimunashe_Resume.pdf"
+          target="_blank"
+          class="inline-flex items-center bg-gradient-to-r from-primary to-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transform transition shadow-lg"
         >
-          {{ link }}
-        </span>
-      </a>
-    </nav>
-  </div>
-</header>
+          <i class="fas fa-download mr-2"></i> Download Resume
+        </a>
+      </div>
 
+      <div ref="globeContainer" class="flex-1 md:w-[60%] w-full h-64 md:h-[450px]"></div>
+    </section>
 
-<section class="h-screen flex flex-col md:flex-row items-center justify-center px-6 gap-10 bg-gradient-to-r from-primary to-accent relative overflow-hidden">
-  <!-- Left: Hero Text -->
-  <div class="flex-1 md:w-1/2 text-center md:text-left space-y-4">
-    <h2 ref="heroTitle" class="text-5xl md:text-6xl font-extrabold leading-tight">Kwaziwai, I'm Faraimunashe</h2>
-    <p ref="heroSubtitle" class="text-lg md:text-xl font-light">Software Developer crafting beautiful & intuitive desktop, web & mobile application experiences.</p>
-    <a
-      href="/assets/Faraimunashe_Resume.pdf"
-      target="_blank"
-      class="inline-block bg-gradient-to-r from-primary to-blue-500 text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transform transition"
-    >
-      <i class="fas fa-download mr-2"></i> Download Resume
-    </a>
-  </div>
-
-  <!-- Right: Animated Globe -->
-  <div ref="globeContainer" class="flex-1 md:w-[60%] w-full h-64 md:h-[450px]"></div>
-</section>
-
-
-
-    <!-- Tech Stack Section -->
+    <!-- Tech Stack -->
     <section id="tech" class="py-24 bg-gray-900">
       <div class="max-w-5xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-6 text-primary">Tech Stack</h2>
+        <h2 class="text-4xl font-bold mb-4 text-primary">Tech Stack</h2>
         <p class="text-gray-400 mb-8">Technologies I use and love:</p>
         <div class="flex flex-wrap justify-center gap-6">
-          <div v-for="tech in techStack" :key="tech.name" class="flex items-center space-x-2 bg-gray-800 shadow rounded px-4 py-2">
+          <div
+            v-for="tech in techStack"
+            :key="tech.name"
+            class="flex items-center space-x-2 bg-gray-800 shadow rounded px-4 py-2 transition hover:shadow-xl hover:scale-105"
+          >
             <i :class="tech.icon"></i>
             <span>{{ tech.name }}</span>
           </div>
@@ -62,126 +61,98 @@
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 text-gray-100" data-aos="fade-up">
-    <!-- Decorative gradient shine -->
-    <div class="absolute -top-10 -left-10 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-3xl rounded-full animate-pulse"></div>
-    <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-pink-500 to-purple-700 opacity-10 blur-2xl rounded-full"></div>
+    <!-- Experience -->
+    <section id="experience" class="py-24 relative bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 text-gray-100 overflow-hidden">
+      <div class="absolute -top-10 -left-10 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-3xl rounded-full animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-pink-500 to-purple-700 opacity-10 blur-2xl rounded-full"></div>
 
-    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <div class="max-w-5xl mx-auto text-center relative z-10">
         <h2 class="text-4xl font-bold mb-4 text-primary">Experience</h2>
         <p class="text-gray-300 mb-12">Here’s a brief timeline of my professional journey:</p>
 
-        <!-- Timeline -->
         <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2">
-        <div
+          <div
             v-for="(exp, index) in experiences"
             :key="index"
-            class="flex md:contents group transition-transform transform hover:scale-[1.02]"
-        >
-            <!-- Timeline Line & Dot -->
+            class="flex md:contents group hover:scale-[1.02] transition-transform"
+          >
             <div class="col-start-1 col-end-3 mr-4 md:mx-auto relative">
-            <div class="h-full w-1 bg-gradient-to-b from-primary to-blue-400 pointer-events-none"></div>
-            <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-gradient-to-br from-primary to-blue-400 shadow-lg ring-4 ring-gray-900 animate-pulse"></div>
+              <div class="h-full w-1 bg-gradient-to-b from-primary to-blue-400"></div>
+              <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-gradient-to-br from-primary to-blue-400 shadow-lg ring-4 ring-gray-900 animate-pulse"></div>
             </div>
 
-            <!-- Experience Content Box -->
-            <div
-            class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-md col-start-3 col-end-10 p-6 rounded-xl my-4 shadow-lg border border-primary/30 transition duration-500 group-hover:shadow-xl group-hover:scale-[1.02]"
-            >
-            <h3 class="text-xl font-semibold text-primary mb-1">{{ exp.title }}</h3>
-            <p class="text-sm text-gray-400 mb-1">{{ exp.company }} | {{ exp.year }}</p>
-            <p class="text-gray-300 text-sm">{{ exp.description }}</p>
+            <div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 backdrop-blur-md col-start-3 col-end-10 p-6 rounded-xl my-4 shadow-lg border border-primary/30 transition group-hover:shadow-xl">
+              <h3 class="text-xl font-semibold text-primary mb-1">{{ exp.title }}</h3>
+              <p class="text-sm text-gray-400 mb-1">{{ exp.company }} | {{ exp.year }}</p>
+              <p class="text-gray-300 text-sm">{{ exp.description }}</p>
             </div>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
 
+    <!-- Education -->
+    <section id="education" class="py-24 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 overflow-hidden">
+      <div class="absolute -top-10 left-1/2 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-3xl rounded-full -translate-x-1/2 animate-pulse"></div>
+      <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-pink-500 to-purple-700 opacity-10 blur-2xl rounded-full"></div>
 
-    <!-- Education Section -->
-    <section id="education" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100" data-aos="fade-up">
-    <!-- Decorative blurred shine -->
-    <div class="absolute -top-10 left-1/2 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 opacity-20 blur-3xl rounded-full -translate-x-1/2 animate-pulse"></div>
-    <div class="absolute bottom-0 right-0 w-72 h-72 bg-gradient-to-br from-pink-500 to-purple-700 opacity-10 blur-2xl rounded-full"></div>
-
-    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <div class="max-w-5xl mx-auto text-center relative z-10">
         <h2 class="text-4xl font-bold mb-6 text-primary">Education</h2>
-
         <div class="space-y-8">
-        <div
-            class="bg-gradient-to-br from-gray-700/40 to-gray-800/40 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-primary/20 transition transform hover:scale-105 hover:shadow-xl"
-        >
+          <div class="bg-gradient-to-br from-gray-700/40 to-gray-800/40 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-primary/20 transition hover:scale-105 hover:shadow-xl">
             <h3 class="text-2xl font-semibold text-accent">Bachelor of Science in Computer Science</h3>
             <p class="text-gray-400">Midlands State University, 2018 - 2022</p>
             <p class="mt-2 text-gray-300 text-sm">Focused on software development, algorithms, and data structures. Participated in various tech clubs and hackathons.</p>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
 
+    <!-- Projects -->
+    <section id="projects" class="py-24 bg-gray-800 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-500 to-purple-600 opacity-10 blur-3xl rounded-full animate-pulse"></div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-gray-800 relative overflow-hidden" data-aos="fade-up">
-    <!-- Decorative gradient shine -->
-    <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-500 to-purple-600 opacity-10 blur-3xl rounded-full animate-pulse"></div>
-
-    <div class="max-w-6xl mx-auto text-center relative z-10">
+      <div class="max-w-6xl mx-auto text-center relative z-10">
         <h2 class="text-4xl font-bold mb-12 text-primary">Selected Projects</h2>
-
         <div class="grid md:grid-cols-2 gap-10">
-        <div
+          <div
             v-for="project in projects"
             :key="project.id"
-            class="group relative overflow-hidden rounded-xl shadow-lg transform hover:scale-[1.02] transition duration-500"
-        >
-            <!-- Project image with subtle rotation and scaling -->
-            <img
-            :src="project.image"
-            alt="Project"
-            class="w-full h-64 object-cover transform group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-in-out"
-            />
-
-            <!-- Overlay with gradient, fade-in and slight upward motion -->
-            <div
-            class="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/50 to-black/70 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-white text-center px-4 transform group-hover:-translate-y-2"
-            >
-            <h3 class="text-2xl font-bold mb-2">{{ project.title }}</h3>
-            <p class="text-sm">{{ project.description }}</p>
-            <a
-                :href="project.link"
-                target="_blank"
-                class="inline-block mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            >
+            class="group relative overflow-hidden rounded-xl shadow-lg transition transform hover:scale-[1.02]"
+          >
+            <img :src="project.image" alt="Project" class="w-full h-64 object-cover transform group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-in-out" />
+            <div class="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/50 to-black/70 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white text-center px-4 transform group-hover:-translate-y-2">
+              <h3 class="text-2xl font-bold mb-2">{{ project.title }}</h3>
+              <p class="text-sm">{{ project.description }}</p>
+              <a :href="project.link" target="_blank" class="inline-block mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-blue-700 transition">
                 <i class="fas fa-external-link-alt mr-1"></i> View
-            </a>
+              </a>
             </div>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
     </section>
 
-
-    <!-- GitHub Contributions Section -->
+    <!-- GitHub Contributions -->
     <section class="py-24 bg-gray-900">
       <div class="max-w-5xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-6 text-primary">My GitHub Contributions</h2>
         <p class="text-gray-400 mb-8">My coding activity & open-source spirit:</p>
         <div class="overflow-x-auto flex justify-center">
-          <img :src="`https://github-readme-streak-stats.herokuapp.com/?user=${githubUsername}&theme=dark&date_format=M%20j%5B%2C%20Y%5D`" alt="GitHub Streak" class="rounded shadow" />
+          <img :src="`https://github-readme-streak-stats.herokuapp.com/?user=${githubUsername}&theme=dark&date_format=M%20j%5B%2C%20Y%5D`" alt="GitHub Streak" class="rounded shadow-lg" />
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-24 bg-gray-800">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-6 text-primary">Let’s Connect</h2>
         <p class="text-gray-300 mb-8">Have an idea or project? Let’s collaborate!</p>
         <form class="max-w-md mx-auto space-y-4">
-          <input type="text" placeholder="Name" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400" />
-          <input type="email" placeholder="Email" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400" />
-          <textarea placeholder="Message" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400"></textarea>
+          <input type="text" placeholder="Name" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400 transition" />
+          <input type="email" placeholder="Email" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400 transition" />
+          <textarea placeholder="Message" class="w-full border-b border-gray-600 focus:outline-none focus:border-primary px-4 py-2 bg-transparent placeholder-gray-400 transition"></textarea>
           <button type="submit" class="bg-primary text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition">
             <i class="fas fa-paper-plane mr-2"></i> Send
           </button>
@@ -195,6 +166,7 @@
     </footer>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue';
