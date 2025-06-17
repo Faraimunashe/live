@@ -26,8 +26,7 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="h-screen flex flex-col md:flex-row items-center justify-center px-6 gap-10 bg-gradient-to-r from-primary to-accent relative overflow-hidden">
+    <section class="h-screen flex flex-col md:flex-row items-center justify-center px-6 py-10 gap-10 bg-gradient-to-r from-primary to-accent relative overflow-hidden">
       <div class="flex-1 md:w-1/2 text-center md:text-left space-y-4">
         <h2 ref="heroTitle" class="text-5xl md:text-6xl font-extrabold leading-tight">Kwaziwai, I'm Faraimunashe</h2>
         <p ref="heroSubtitle" class="text-lg md:text-xl font-light">Software Developer crafting beautiful & intuitive desktop, web & mobile application experiences.</p>
@@ -42,6 +41,10 @@
 
       <div ref="globeContainer" class="flex-1 md:w-[60%] w-full h-64 md:h-[450px]"></div>
     </section>
+
+
+
+
 
     <!-- Tech Stack -->
     <section id="tech" class="py-24 bg-gray-900">
